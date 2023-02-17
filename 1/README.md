@@ -1,4 +1,4 @@
-# Python script to retrieve and print information about AWS EC2 instances using boto3.
+# Python script to retrieve and print information about AWS EC2 instances using boto3
 
 This Python script uses the boto3 library to interact with the Amazon Web Services (AWS) EC2 service.
 
