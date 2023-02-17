@@ -9,5 +9,4 @@ including their tags and instance types. The script then loops through the reser
 To run this script, you will need to set up your AWS credentials using the aws configure command to provide your access key ID and secret access key. 
 This will allow the script to access your AWS account. Once your credentials are configured, you can run this script locally in your Python environment.
 
-Note: This script requires that you have the boto3 library installed in your Python environment. 
-You can install it using pip, by running pip install boto3 in your terminal or command prompt.
+Note: Please note that the script's dependencies are listed in the requirements.txt file. Before running the script, please ensure that you have installed all dependencies, including AWS SDK for Python, using the following command: pip install -r requirements.txt. This will ensure that the script can run successfully without any missing dependencies.
