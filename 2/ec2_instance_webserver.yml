@@ -1,0 +1,67 @@
+---
+# Creates an EC2 instance with a simple Python-based web server running on port 80 
+# and serving a basic HTML website
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A simple template for EC2 instance
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+  ImageId:
+    Type: String
+    Default: ami-0b5eea76982371e91
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: my_ec2_key_pair
+  WebsiteContent:
+    Type: String
+    Default: >
+      <html>
+      <head>
+          <title>My Simple Website</title>
+      </head>
+      <body>
+          <h1>Welcome to My Simple Website</h1>
+          <nav>
+              <ul>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#services">Services</a></li>
+                  <li><a href="#contact">Contact</a></li>
+              </ul>
+          </nav>
+          <h2>About Us</h2>
+          <p>We are a company that specializes in providing high-quality services to our customers. We have been in business
+              for many years and have a reputation for excellence.</p>
+          <h2>Our Services</h2>
+          <ul>
+              <li>Service 1</li>
+              <li>Service 2</li>
+              <li>Service 3</li>
+          </ul>
+          <h2>Contact Us</h2>
+          <p>You can contact us by phone at 555-555-5555 or by email at info@example.com.</p>
+      </body>
+      </html>
+Resources:
+  EC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !Ref ImageId
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - "sg-0904a15640a89803e"
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum install -y python3
+          if [ ! -d "/var/www/html" ]; then
+            mkdir /var/www
+          fi
+            mkdir /var/www/html
+          cd /var/www/html
+          echo '${WebsiteContent}' > index.html
+          python3 -m http.server 80 &
+      Tags:
+        - Key: Name
+          Value: "MyEC2Instance"
