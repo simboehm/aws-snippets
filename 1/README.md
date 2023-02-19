@@ -1,12 +1,16 @@
-# Python script to retrieve and print information about AWS EC2 instances using boto3
+# EC2 Instance Info
 
-This Python script uses the boto3 library to interact with the Amazon Web Services (AWS) EC2 service.
+This Python script provides information about running EC2 instances in your AWS account. It uses the Boto3 library to interact with the AWS API and prints out details about each running instance.
 
-The script creates an EC2 client and resource objects using boto3, and then calls the describe_instances method to get 
-information about all instances in the account. The response object contains a dictionary with information about the instances, 
-including their tags and instance types. The script then loops through the reservations and instances to print the instance ID and AMI ID.
+## Requirements
 
-To run this script, you will need to set up your AWS credentials using the aws configure command to provide your access key ID and secret access key. 
-This will allow the script to access your AWS account. Once your credentials are configured, you can run this script locally in your Python environment.
+- Python 3
+- Boto3 library (`pip install boto3`)
 
-Note: Please note that the script's dependencies are listed in the requirements.txt file. Before running the script, please ensure that you have installed all dependencies, including AWS SDK for Python, using the following command: pip install -r requirements.txt. This will ensure that the script can run successfully without any missing dependencies.
+## Usage
+
+1. Configure your AWS credentials using one of the methods described in the [Boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html#configuration).
+2. Run the script using `python ec2_instance_info.py`.
+3. The script will output information about each running EC2 instance in your account, including instance ID, instance type, AMI ID, key name, security groups, IP addresses, subnet ID, VPC ID, instance state, launch time, and tags.
+
+Note: This script only provides information about running instances. If you want to retrieve information about instances in other states (such as stopped or terminated), you will need to modify the Filters argument in the `describe_instances` and `instances.filter` functions.
