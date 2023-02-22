@@ -1,6 +1,6 @@
 ---
 # Creates an EC2 instance with a simple Apache web server running on port 80 
-# and serving a basic HTML website
+# and serving a basic HTML website using an index.html from an S3 bucket
 AWSTemplateFormatVersion: "2010-09-09"
 Description: A simple template for EC2 instance
 Resources:
