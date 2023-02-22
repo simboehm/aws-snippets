@@ -7,6 +7,8 @@ This is a simple CloudFormation template for creating an EC2 instance with the f
 - IAM instance profile with permissions to access S3
 - A user data script that installs and starts the Apache HTTP server and copies an index.html file from an S3 bucket to the instance's web server directory.
 
+Note: The security group must allow incoming traffic on port 80.
+
 ### Resources
 - `EC2Instance`: Creates the EC2 instance with the specified instance type, AMI ID, key pair, IAM instance profile, and user data script.
 - `EC2InstanceProfile`: Creates an IAM instance profile with permissions to access S3 and associates it with the EC2 instance.
